@@ -1,0 +1,19 @@
+[project]
+name = "groq-chromadb-rag"
+version = "0.1.0"
+description = "Groq + ChromaDB retrieval-augmented generation app"
+requires-python = ">=3.10"
+dependencies = [
+  "chromadb>=1.0",
+  "sentence-transformers>=3.0",
+  "torch>=2.0",
+  "groq>=0.30",
+  "python-dotenv>=1.0",
+  "pypdf>=5.0",
+  "fastapi>=0.115",
+  "python-multipart>=0.0.9",
+  "uvicorn[standard]>=0.30",
+]
+
+[tool.vercel]
+entrypoint = "api:app"

@@ -1,0 +1,79 @@
+What Are Embeddings?
+
+Embeddings are numerical representations of text, images, audio, or other types of data. They convert information into vectors, which are lists of numbers that capture meaningful patterns and relationships in the original data.
+
+In natural language processing, text embeddings represent words, sentences, paragraphs, or documents as numerical vectors. Texts with similar meanings usually have vectors that are close to each other in the embedding space.
+
+For example, the sentences "How can I learn Python?" and "What is the best way to study Python?" have different words, but they have a similar meaning. A good embedding model should represent these sentences with vectors that are relatively close to each other.
+
+Embeddings are commonly used in semantic search. Instead of searching only for exact keywords, a system can compare the meaning of a user's query with stored documents. This allows the system to find relevant information even when the exact words are different.
+
+How Embeddings Work
+
+An embedding model receives text as input and produces a vector as output. For example, a sentence might be converted into a vector containing hundreds of numerical values.
+
+The numbers themselves do not have simple human-readable meanings. Instead, the complete vector represents patterns learned by the embedding model.
+
+When two pieces of text have similar meanings, their embedding vectors tend to be mathematically closer together. Similarity can be measured using methods such as cosine similarity.
+
+Cosine Similarity
+
+Cosine similarity measures the similarity between two vectors by calculating the cosine of the angle between them.
+
+A cosine similarity value close to 1 generally indicates that two vectors point in similar directions. A value close to 0 indicates little similarity, while a negative value can indicate opposite directions in some embedding spaces.
+
+Embeddings in RAG
+
+Retrieval-Augmented Generation, commonly called RAG, uses embeddings to retrieve relevant information before generating an answer.
+
+A typical RAG system first divides documents into smaller chunks. Each chunk is passed through an embedding model and converted into a vector. These vectors are stored in a vector database such as ChromaDB.
+
+When a user asks a question, the question is also converted into an embedding. The system compares the question vector with the stored document vectors and retrieves the most relevant chunks.
+
+The retrieved chunks are then provided to a language model as context. The language model uses this context to generate an answer.
+
+ChromaDB
+
+ChromaDB is a vector database that can store embeddings along with the original text and metadata.
+
+A RAG application can store document chunks in a ChromaDB collection. Each stored item can contain an embedding, the original document text, and metadata such as the source filename or page number.
+
+When a query is received, ChromaDB can search for vectors that are most similar to the query embedding.
+
+Local Embedding Models
+
+Embedding models do not always need an external API. Some models can run locally on a computer.
+
+One commonly used model is all-MiniLM-L6-v2. It is available through the Sentence Transformers ecosystem and can generate embeddings for sentences and short passages.
+
+Using a local embedding model can be useful when building a RAG application because the text does not need to be sent to an external embedding API.
+
+Example RAG Process
+
+Step 1: A user uploads a document.
+
+Step 2: The application extracts the text from the document.
+
+Step 3: The text is divided into smaller chunks.
+
+Step 4: Each chunk is converted into an embedding vector.
+
+Step 5: The vectors and their associated text are stored in ChromaDB.
+
+Step 6: The user asks a question.
+
+Step 7: The question is converted into an embedding.
+
+Step 8: ChromaDB searches for the most similar document chunks.
+
+Step 9: The retrieved chunks are sent to the language model as context.
+
+Step 10: The language model generates an answer based on the retrieved information.
+
+Why Embeddings Are Useful
+
+Embeddings are useful because they allow applications to work with the meaning of information rather than relying only on exact keyword matches.
+
+They are used in semantic search, recommendation systems, document retrieval, question-answering systems, duplicate detection, clustering, and Retrieval-Augmented Generation applications.
+
+The quality of a retrieval system depends on several factors, including the embedding model, document chunk size, chunk overlap, similarity search method, and quality of the original documents.
